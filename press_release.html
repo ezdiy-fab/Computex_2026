@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZDIY-FAB | Computex 2026</title>
-    <script src="./EZDIY-FAB _ Computex 2026_files/saved_resource"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @font-face {
             font-family: 'Segoe UI';
@@ -30,7 +31,23 @@
             background-color: var(--bg-dark);
             color: #ffffff;
             overflow-x: hidden;
-            cursor: none; /* Hide default cursor for custom halo */
+        }
+
+        /* 2. 全域取消文字游標 (僅限桌機，完全由自訂光圈取代) */
+        @media (min-width: 1025px) {
+            *, *::before, *::after {
+                cursor: none !important;
+            }
+        }
+
+        /* Responsive Cursor Reset for Mobile/Tablets - 恢復原生游標 */
+        @media (max-width: 1024px) {
+            *, *::before, *::after {
+                cursor: auto !important;
+            }
+            #cursor-halo, #cursor-dot {
+                display: none !important;
+            }
         }
 
         /* Custom Scrollbar in Yellow */
@@ -129,7 +146,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             transition: all 0.3s ease;
             z-index: 20;
         }
@@ -137,13 +153,6 @@
             background: var(--accent-yellow);
             color: #000;
             transform: rotate(90deg);
-        }
-
-        /* Text Effects & HUD styling */
-        .text-gradient {
-            background: linear-gradient(to right, #ffffff, #a0a0a0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .hud-border {
@@ -167,7 +176,6 @@
             border: 1px solid var(--card-border);
             border-radius: 0.25rem;
             background: transparent;
-            cursor: pointer;
             position: relative;
             display: inline-block;
             vertical-align: middle;
@@ -202,7 +210,6 @@
             background: rgba(255,255,255,0.08);
         }
 
-        /* Brand & Modder items style */
         .brand-item {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -214,17 +221,17 @@
             transform: scale(1.05);
         }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.left-1\/2{left:50%}.right-4{right:1rem}.top-0{top:0px}.top-1\/2{top:50%}.top-4{top:1rem}.top-full{top:100%}.z-10{z-index:10}.z-50{z-index:50}.z-\[100\]{z-index:100}.col-span-1{grid-column:span 1 / span 1}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-20{margin-bottom:5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mt-auto{margin-top:auto}.mt-10{margin-top:2.5rem}.mb-10{margin-bottom:2.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-1\.5{height:0.375rem}.h-2{height:0.5rem}.h-20{height:5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-7{height:1.75rem}.h-8{height:2rem}.h-\[800px\]{height:800px}.h-auto{height:auto}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-1\.5{width:0.375rem}.w-12{width:3rem}.w-2{width:0.5rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.w-\[800px\]{width:800px}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}.max-w-\[90rem\]{max-width:90rem}.max-w-md{max-width:28rem}.flex-grow{flex-grow:1}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-y-2{--tw-translate-y:0.5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-95{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-none{cursor:none}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-green-500{--tw-border-opacity:1;border-color:rgb(34 197 94 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/20{border-color:rgb(255 255 255 / 0.2)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-\[\#0a0a0a\]\/90{background-color:rgb(10 10 10 / 0.9)}.bg-\[\#0a0a0a\]\/95{background-color:rgb(10 10 10 / 0.95)}.bg-\[\#ffe700\]{--tw-bg-opacity:1;background-color:rgb(255 231 0 / var(--tw-bg-opacity, 1))}.bg-\[\#ffe700\]\/5{background-color:rgb(255 231 0 / 0.05)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-black\/30{background-color:rgb(0 0 0 / 0.3)}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-black\/50{background-color:rgb(0 0 0 / 0.5)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-green-500\/10{background-color:rgb(34 197 94 / 0.1)}.bg-transparent{background-color:transparent}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.object-contain{object-fit:contain}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-8{padding:2rem}.p-\[50px\]{padding:50px}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-2{padding-bottom:0.5rem}.pb-4{padding-bottom:1rem}.pl-2{padding-left:0.5rem}.pt-2{padding-top:0.5rem}.pt-20{padding-top:5rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#ffe700\]{--tw-text-opacity:1;color:rgb(255 231 0 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-green-400{--tw-text-opacity:1;color:rgb(74 222 128 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_10px_\#ffe700\]{--tw-shadow:0 0 10px #ffe700;--tw-shadow-colored:0 0 10px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[0_0_20px_rgba\(255\2c 231\2c 0\2c 0\.3\)\]{--tw-shadow:0 0 20px rgba(255,231,0,0.3);--tw-shadow-colored:0 0 20px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow-\[0_0_30px_rgba\(255\2c 231\2c 0\2c 0\.2\)\]{--tw-drop-shadow:drop-shadow(0 0 30px rgba(255,231,0,0.2));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.selection\:bg-\[\#ffe700\] *::selection{--tw-bg-opacity:1;background-color:rgb(255 231 0 / var(--tw-bg-opacity, 1))}.selection\:text-black *::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.selection\:bg-\[\#ffe700\]::selection{--tw-bg-opacity:1;background-color:rgb(255 231 0 / var(--tw-bg-opacity, 1))}.selection\:text-black::selection{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:border-\[\#ffe700\]:hover{--tw-border-opacity:1;border-color:rgb(255 231 0 / var(--tw-border-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:bg-white\/10:hover{background-color:rgb(255 255 255 / 0.1)}.hover\:bg-white\/5:hover{background-color:rgb(255 255 255 / 0.05)}.hover\:text-\[\#ffe700\]:hover{--tw-text-opacity:1;color:rgb(255 231 0 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-\[0_0_30px_rgba\(255\2c 255\2c 255\2c 0\.5\)\]:hover{--tw-shadow:0 0 30px rgba(255,255,255,0.5);--tw-shadow-colored:0 0 30px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:pointer-events-auto{pointer-events:auto}.group:hover .group-hover\:translate-y-0{--tw-translate-y:0px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:text-\[\#ffe700\]{--tw-text-opacity:1;color:rgb(255 231 0 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.md\:gap-\[200px\]{gap:200px}.md\:p-12{padding:3rem}.md\:p-14{padding:3.5rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-8xl{font-size:6rem;line-height:1}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:text-6xl{font-size:3.75rem;line-height:1}.lg\:text-\[10rem\]{font-size:10rem}}</style></head>
+</head>
 <body class="antialiased selection:bg-[#ffe700] selection:text-black">
 
     <div class="tech-bg"></div>
     <div class="glow-overlay"></div>
-    <div id="cursor-halo" style="left: 737px; top: 219px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 231, 0, 0.15) 0%, transparent 70%);"></div>
-    <div id="cursor-dot" style="left: 737px; top: 219px;"></div>
+    <div id="cursor-halo"></div>
+    <div id="cursor-dot"></div>
 
     <nav class="fixed top-0 left-0 w-full z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="http://computex2026.ezdiy-fab.com/#" class="flex items-center h-full py-4">
+            <a href="http://computex2026.ezdiy-fab.com/#" class="flex items-center h-full py-4 z-50">
                 <img src="https://sgrandy1-bot.github.io/landing-page/EZDIY-FAB LOGO.png" alt="EZDIY-FAB Logo" class="h-7 object-contain rounded-lg">
             </a>
             
@@ -240,129 +247,265 @@
                     </button>
                     <div class="absolute top-full left-0 mt-1 w-64 bg-[#0a0a0a]/95 border border-white/10 rounded-xl shadow-2xl py-3 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 backdrop-blur-md">
                         <a href="http://computex2026.ezdiy-fab.com/#product-a" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">ALPHA</a>
-                        <a href="http://computex2026.ezdiy-fab.com/#product-c" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">UNIFAS CABLE</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-c" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">UNIFAS</a>
                         <a href="http://computex2026.ezdiy-fab.com/#product-d" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">MEMORY HEATSINK</a>
                         <a href="http://computex2026.ezdiy-fab.com/#product-b" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">CASE FAN</a>
                         <a href="http://computex2026.ezdiy-fab.com/#product-e" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">GPU SUPPORT</a>
-                        <a href="http://computex2026.ezdiy-fab.com/#product-f" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">CONNECTIVITY &amp; CONTROL</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-f" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">CONNECTIVITY & CONTROL</a>
                         <a href="http://computex2026.ezdiy-fab.com/#product-g" class="block px-5 py-2.5 text-xs text-gray-300 hover:bg-white/5 hover:text-[#ffe700] transition-colors">I/O ADAPTER</a>
                     </div>
                 </div>
 
-                <a href="https://computex2026.ezdiy-fab.com/press_release" target="_self" class="hover:text-[#ffe700] transition-colors">PRESS RELEASE</a>
+                <a href="http://computex2026.ezdiy-fab.com/press_release" target="_self" class="hover:text-[#ffe700] transition-colors">PRESS RELEASE</a>
                 <a href="http://computex2026.ezdiy-fab.com/#category" class="hover:text-[#ffe700] transition-colors">CATEGORY</a>
                 <a href="http://computex2026.ezdiy-fab.com/#contact" class="hover:text-[#ffe700] transition-colors">CONTACT US</a>
                 <a href="http://computex2026.ezdiy-fab.com/#partners" class="hover:text-[#ffe700] transition-colors">PARTNERS</a>
             </div>
 
-            <!-- Hamburger Button for Mobile -->
-            <button id="hamburger-btn" class="lg:hidden text-white focus:outline-none cursor-none p-2" aria-label="Toggle Menu">
+            <!-- 1. Hamburger Button for Mobile - 修復顯示問題 -->
+            <button id="hamburger-btn" class="block lg:hidden text-white hover:text-[#ffe700] focus:outline-none p-2 z-50 relative transition-colors" aria-label="Toggle Menu">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
         <!-- Mobile Drawer Menu overlay -->
-        <div id="mobile-menu" class="hidden lg:hidden w-full bg-[#0a0a0a]/95 border-b border-white/10 px-6 py-6 space-y-4 text-sm font-bold tracking-wider backdrop-blur-md">
+        <div id="mobile-menu" class="hidden lg:hidden w-full bg-[#0a0a0a]/95 border-b border-white/10 px-6 py-6 space-y-4 text-sm font-bold tracking-wider backdrop-blur-md absolute top-20 left-0">
             <a href="http://computex2026.ezdiy-fab.com/#hero" class="block hover:text-[#ffe700] transition-colors py-2 mobile-nav-link">HOME</a>
             
             <div class="border-t border-white/5 pt-2">
-                <span class="text-xs text-gray-500 block mb-2 tracking-widest">PRODUCT SOLUTIONS</span>
-                <div class="grid grid-cols-2 gap-2 pl-2">
-                    <a href="http://computex2026.ezdiy-fab.com/#product-a" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">ALPHA</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-c" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">UNIFAS CABLE</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-d" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">MEMORY HEATSINK</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-b" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">CASE FAN</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-e" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">GPU SUPPORT</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-f" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">CONNECTIVITY &amp; CONTROL</a>
-                    <a href="http://computex2026.ezdiy-fab.com/#product-g" class="block hover:text-[#ffe700] transition-colors py-1.5 mobile-nav-link text-xs">I/O ADAPTER</a>
+                <button id="mobile-product-btn" class="w-full flex items-center justify-between text-left py-2 hover:text-[#ffe700] transition-colors focus:outline-none">
+                    <span>PRODUCT</span>
+                    <svg id="mobile-product-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                
+                <div id="mobile-product-submenu" class="hidden mt-3 mb-2 bg-[#ffe700] rounded-md p-4 transition-all duration-300 shadow-lg">
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <a href="http://computex2026.ezdiy-fab.com/#product-a" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">ALPHA</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-c" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">UNIFAS</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-d" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">MEMORY HEATSINK</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-b" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">CASE FAN</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-e" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">GPU SUPPORT</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-f" class="block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">CONNECTIVITY & CONTROL</a>
+                        <a href="http://computex2026.ezdiy-fab.com/#product-g" class="col-span-2 block text-black hover:text-white hover:bg-black/80 rounded px-3 py-1 transition-colors mobile-nav-link text-left">I/O ADAPTER</a>
+                    </div>
                 </div>
             </div>
 
-            <a href="https://computex2026.ezdiy-fab.com/press_release" target="_self" class="block hover:text-[#ffe700] transition-colors py-2 border-t border-white/5 pt-4">PRESS RELEASE</a>
-            <a href="http://computex2026.ezdiy-fab.com/#partners" class="block hover:text-[#ffe700] transition-colors py-2 mobile-nav-link border-t border-white/5 pt-4">PARTNERS</a>
+            <a href="http://computex2026.ezdiy-fab.com/press_release" target="_self" class="block hover:text-[#ffe700] transition-colors py-2 border-t border-white/5 pt-4">PRESS RELEASE</a>
             <a href="http://computex2026.ezdiy-fab.com/#category" class="block hover:text-[#ffe700] transition-colors py-2 mobile-nav-link border-t border-white/5 pt-4">CATEGORY</a>
             <a href="http://computex2026.ezdiy-fab.com/#contact" class="block hover:text-[#ffe700] transition-colors py-2 mobile-nav-link border-t border-white/5 pt-4">CONTACT US</a>
+            <a href="http://computex2026.ezdiy-fab.com/#partners" class="block hover:text-[#ffe700] transition-colors py-2 mobile-nav-link border-t border-white/5 pt-4">PARTNERS</a>
         </div>
     </nav>
 
     <!-- 13. 新聞稿 -->
-    <section id="product-c" class="py-24 relative bg-black/40">
+    <section id="product-c" class="pt-32 pb-24 relative bg-black/40">
         <div class="max-w-7xl mx-auto px-6">
-            <!-- 移除整體 text-center，改由內部元素各自對齊，確保各排版皆可獨立控制 -->
             <div class="mb-16 reveal active">
-                <br>
                 
-                <!-- 1. 高度70px的漸層橫幅，主要顏色 #ffe700，黑色 NEWS 文字距離左邊 50px -->
+                <!-- 高度70px的漸層橫幅 -->
                 <div class="w-full flex items-center mb-8 rounded-sm" style="height: 70px; background: linear-gradient(to right, #ffe700, transparent); padding-left: 20px;">
                     <span class="text-black font-bold text-2xl tracking-widest">NEWS</span>
                 </div>
 
-                <!-- 大標及小標保持水平置中 -->
+                <!-- 大標及小標 -->
                 <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center">EZDIY-FAB to Showcase PC Build Optimization Solutions at COMPUTEX 2026</h2>
-                <p class="text-gray-400 font-bold tracking-widest text-lg mt-4 text-center">Themed zones highlight cleaner cable management, smarter integration, and enhanced PC build aesthetics</p>
+                <p class="text-gray-400 font-bold tracking-wide text-lg mt-4 text-center">Themed zones highlight cleaner cable management, smarter integration, and enhanced PC build aesthetics</p>
                 
-                <!-- 2. 可調間距、顏色及粗細的底線 (可透過 inline-style 調整 margin, height, background-color) -->
+                <!-- 底線 -->
                 <div class="w-full" style="margin-top: 30px; margin-bottom: 20px; height: 2px; background-color: #ffe700;"></div>
 
-                <!-- 底線下方靠左日期 -->
+                <!-- 日期 -->
                 <p class="text-gray-400 font-bold tracking-widest text-sm mb-10 text-left">2026/05/26</p>
 
-                <!-- 新聞稿內文靠左對齊，並加入換行確保閱讀體驗 -->
-                <p class="text-gray-400 tracking-widest text-sm mt-4 text-left leading-relaxed">TAIPEI, Taiwan — May 26, 2026 — EZDIY-FAB, a global PC accessory brand focused on builder-driven innovation, will participate in COMPUTEX 2026 from June 2–5, 2026, at Taipei Nangang Exhibition Center, Hall 2, 1F. Located in the Consumer Electronics & Peripherals exhibition area at Booth Q0606, EZDIY-FAB will present its PC Build Optimization showcase, demonstrating how its accessories help improve cable routing, component integration, safety, and overall system aesthetics.<br><br>
+                <!-- 3. 修復 HTML 結構並優化行距 (leading-loose) -->
+                <div class="space-y-6 text-gray-300 tracking-wider text-base text-left leading-loose">
+                    <p>TAIPEI, Taiwan — May 26, 2026 — EZDIY-FAB, a global PC accessory brand focused on builder-driven innovation, will participate in COMPUTEX 2026 from June 2–5, 2026, at Taipei Nangang Exhibition Center, Hall 2, 1F. Located in the Consumer Electronics & Peripherals exhibition area at Booth Q0606, EZDIY-FAB will present its PC Build Optimization showcase, demonstrating how its accessories help improve cable routing, component integration, safety, and overall system aesthetics.</p>
 
-This year, EZDIY-FAB will organize its booth around real PC build applications instead of individual product displays. The showcase will help visitors understand how purpose-built accessories can solve installation challenges while creating cleaner, more personalized systems.<br><br>
+                    <p>This year, EZDIY-FAB will organize its booth around real PC build applications instead of individual product displays. The showcase will help visitors understand how purpose-built accessories can solve installation challenges while creating cleaner, more personalized systems.</p>
 
-“Modern PC building is not only about performance. It is also about planning, structure, safety, and aesthetics,” said Keith Lin, CEO of EZDIY-FAB. “At COMPUTEX 2026, we want to show how EZDIY-FAB products help builders optimize the installation process and complete their builds with cleaner visual impact.”<br><br>
+                    <p>“Modern PC building is not only about performance. It is also about planning, structure, safety, and aesthetics,” said Keith Lin, CEO of EZDIY-FAB. “At COMPUTEX 2026, we want to show how EZDIY-FAB products help builders optimize the installation process and complete their builds with cleaner visual impact.”</p>
+                </div>
 
-<p class="text-2xl font-bold text-[#ffe700]">GPU Solutions & Real-World Applications :</p>
-<ul class="space-y-6">
-    <li class="flex items-start gap-4">
-        <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-2 shadow-[0_0_10px_#ffe700]"></div>
-        <p class="text-lg text-gray-300">Motherboard Solutions & Real-World Applications :</p>
-    </li>
-Accessories for motherboard power routing, internal connectivity, memory cooling, M.2 SSD cooling, and internal I/O planning.
-<ul class="space-y-6"><
-    <li class="flex items-start gap-4">
-        <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-2 shadow-[0_0_10px_#ffe700]"></div>
-        <p class="text-lg text-gray-300">GPU Solutions & Real-World Applications :</p>
-    </li>
-GPU power adapters, GPU PSU extension cables, vertical mounts, multi-angle mounting solutions, and anti-sag brackets designed for safer, cleaner, and more flexible GPU installation.
-<ul class="space-y-6">
-    <li class="flex items-start gap-4">
-        <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-2 shadow-[0_0_10px_#ffe700]"></div>
-        <p class="text-lg text-gray-300">New Product Showcase :</p>
-    </li>
-Latest products across GPU adapters, memory heatsinks, PSU extension cables, case fans, GPU mounts, GPU brackets, and connectivity control solutions.
-    
+                <!-- 結構化列表 -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-[#ffe700] mb-6">GPU Solutions & Real-World Applications</h3>
+                    <ul class="space-y-8">
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">Motherboard Solutions & Real-World Applications :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                Accessories for motherboard power routing, internal connectivity, memory cooling, M.2 SSD cooling, and internal I/O planning.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">GPU Solutions & Real-World Applications :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                GPU power adapters, GPU PSU extension cables, vertical mounts, multi-angle mounting solutions, and anti-sag brackets designed for safer, cleaner, and more flexible GPU installation.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">New Product Showcase :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                Latest products across GPU adapters, memory heatsinks, PSU extension cables, case fans, GPU mounts, GPU brackets, and connectivity control solutions.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-[#ffe700] mb-6">New Product Highlights</h3>
+                    <ul class="space-y-8">
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">GPU Adapter :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                ALPHA TS13 Temp-Sensing GPU Power Adapter: Features real-time power and temperature monitoring through a built-in TFT display, an overheat alarm, and a U-shaped no-bend design for stable 12V-2x6 power delivery.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">Memory Heatsinks :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                RH01 ARGB Memory Heatsink: Adds aluminum cooling, durable protection, vivid ARGB lighting, broad DDR compatibility, and tool-free installation.<br>
+                                RH02 ARGB Turbo-Cooled Memory Heatsink: A dedicated active RAM cooling solution for DDR4 and DDR5 systems, built for gaming, creative, productivity, and AI-ready PCs.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">PSU Extension Cables :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                UNIFAS ARGB PSU Extension Cable Series: Available in 24-Pin, 16-Pin, and 8-Pin versions, UNIFAS replaces bulky power cables with a clean architectural design and AIO-matched aesthetics.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">Case Fan :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                BF12 ARGB Case Fan: Combines multiple fans into a single integrated unit to reduce wiring, simplify installation, and create a cleaner airflow layout.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">GPU Mounts :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                AH18 PCIe 5.0 ARGB Multi-Angle Vertical GPU Mount: Offers PCIe 5.0 support, flexible mounting, reinforced structure, and ARGB lighting for a more dynamic GPU display.<br>
+                                AH00 PCIe 5.0 ARGB Vertical GPU Mount: Provides a clean, stable solution for vertical GPU presentation in modern high-performance systems.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">GPU Bracket :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                VH90 ARGB GPU Bracket: Uses a front metal knob, sliding rail, lift system, ARGB sync lighting, and reinforced fittings to provide intuitive GPU support and visual enhancement.
+                            </p>
+                        </li>
+                        <li>
+                            <div class="flex items-start gap-4 mb-2">
+                                <div class="w-2 h-2 rounded-full bg-[#ffe700] mt-3 shadow-[0_0_10px_#ffe700] flex-shrink-0"></div>
+                                <h4 class="text-lg text-gray-200 font-bold">Connectivity & Control :</h4>
+                            </div>
+                            <p class="text-gray-400 tracking-wider text-base text-left leading-loose pl-6 md:pl-6">
+                                FH01 PWM ARGB Fan Hub: Consolidates fan power and ARGB lighting control to reduce cable clutter.<br>
+                                MH01 USB 2.0 9-Pin Hub: Expands one USB 2.0 9-pin motherboard header into four internal ports for AIOs, RGB controllers, fan hubs, and front I/O devices.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-12 space-y-6">
+                    <h3 class="text-2xl font-bold text-[#ffe700] mb-4">Industry Collaboration</h3>
+                    <p class="text-gray-400 tracking-wider text-base text-left leading-loose">
+                        EZDIY-FAB’s COMPUTEX 2026 showcase is made possible with the support of many valued partners across the PC hardware community. As EZDIY-FAB products are designed to work closely with key components such as motherboards, graphics cards, memory, power supplies, cases, and cooling systems, support from leading brands, PC modders, and studios helps bring each build scenario to life.
+                    </p>
+                    <p class="text-gray-400 tracking-wider text-base text-left leading-loose">
+                        This year’s showcase features support from ZOTAC, Thermaltake, ASRock, MSI, Palit, Gainward, TEAMGROUP, XPG, KLEVV, GAMDIAS, along with creative support from AK MOD, MSC Studio, and Mark’s Fabrication.
+                    </p>
+                    <p class="text-gray-400 tracking-wider text-base text-left leading-loose">
+                        EZDIY-FAB sincerely thanks all partners for helping create a more complete and engaging COMPUTEX 2026 experience.
+                    </p>
+                </div>
+                
+                <!-- 重構原有的表格排版，使其適配深色主題 -->
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-[#ffe700] mb-6">Visit EZDIY-FAB at COMPUTEX 2026</h3>
+                    <div class="overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                        <table class="w-full text-left text-sm md:text-base text-gray-300">
+                            <tbody class="divide-y divide-white/10">
+                                <tr>
+                                    <td class="px-6 py-4 font-bold bg-black/20 w-1/3">Event</td>
+                                    <td class="px-6 py-4">COMPUTEX 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold bg-black/20">Date</td>
+                                    <td class="px-6 py-4">June 2–5, 2026, Tuesday to Friday</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold bg-black/20">Location</td>
+                                    <td class="px-6 py-4">Taipei Nangang Exhibition Center, Hall 2, 1F</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold bg-black/20">Exhibition Area</td>
+                                    <td class="px-6 py-4">Consumer Electronics & Peripherals</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold bg-black/20">Booth Number</td>
+                                    <td class="px-6 py-4 text-[#ffe700] font-bold tracking-wider">Q0606</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 12. 頁尾與社群媒體 -->
+    <!-- 11. 頁尾與社群媒體 -->
     <footer class="py-20 border-t border-white/10 text-center relative z-10 bg-black">
         <div class="max-w-4xl mx-auto px-6 flex flex-col items-center">
             
             <!-- Social Media Icons (SVGs for sharp premium look) -->
             <div class="flex items-center gap-6 mb-12">
                 <!-- INSTAGRAM -->
-                <a href="https://www.instagram.com/ezdiyfab?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300 cursor-none" aria-label="Instagram">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg>
+                <a href="https://www.instagram.com/ezdiyfab?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
                 </a>
                 <!-- FACEBOOK -->
-                <a href="https://www.facebook.com/EZDIYFAB/" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300 cursor-none" aria-label="Facebook">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                <a href="https://www.facebook.com/EZDIYFAB/" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
                 </a>
                 <!-- TIKTOK -->
-                <a href="https://www.tiktok.com/@ezdiyfab" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300 cursor-none" aria-label="TikTok">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.41-.43-.58-.67-.02 2.44-.01 4.88-.01 7.32-.03 1.2-.24 2.39-.73 3.49-.94 2.24-3.21 3.86-5.67 4.11-2.51.3-5.1-.64-6.65-2.61-1.63-1.95-2.1-4.78-1.21-7.17.81-2.3 3.01-3.99 5.46-4.18.15-.01.3-.01.45-.01.01 1.34 0 2.69.01 4.03-.43.08-.87.23-1.24.49-.9.6-1.41 1.67-1.33 2.75.05 1.07.66 2.06 1.59 2.58.98.57 2.23.51 3.14-.15.9-.62 1.4-1.69 1.34-2.78.02-4.49.01-8.98.01-13.48z"></path></svg>
+                <a href="https://www.tiktok.com/@ezdiyfab" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300" aria-label="TikTok">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.74-3.94-1.74-.22-.2-.41-.43-.58-.67-.02 2.44-.01 4.88-.01 7.32-.03 1.2-.24 2.39-.73 3.49-.94 2.24-3.21 3.86-5.67 4.11-2.51.3-5.1-.64-6.65-2.61-1.63-1.95-2.1-4.78-1.21-7.17.81-2.3 3.01-3.99 5.46-4.18.15-.01.3-.01.45-.01.01 1.34 0 2.69.01 4.03-.43.08-.87.23-1.24.49-.9.6-1.41 1.67-1.33 2.75.05 1.07.66 2.06 1.59 2.58.98.57 2.23.51 3.14-.15.9-.62 1.4-1.69 1.34-2.78.02-4.49.01-8.98.01-13.48z"/></svg>
                 </a>
                 <!-- YOUTUBE -->
-                <a href="https://www.youtube.com/channel/UCA5v8SsEhrbAT2mk34132WQ" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300 cursor-none" aria-label="YouTube">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                <a href="https://www.youtube.com/channel/UCA5v8SsEhrbAT2mk34132WQ" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300" aria-label="YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
                 <!-- X -->
-                <a href="https://x.com/EzdiyF" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300 cursor-none" aria-label="X">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                <a href="https://x.com/EzdiyF" target="_blank" class="p-3 bg-white/5 border border-white/10 rounded-full hover:border-[#ffe700] hover:text-[#ffe700] transition-all duration-300" aria-label="X">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
             </div>
 
@@ -374,7 +517,7 @@ Latest products across GPU adapters, memory heatsinks, PSU extension cables, cas
     <!-- Feature Description Modal Popup -->
     <div id="featureModal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm bg-black/60 p-4">
         <div class="glass-card p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="featureModalContent">
-            <button onclick="closeModals()" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-none">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <h4 id="modalTitle" class="text-2xl font-bold text-[#ffe700] mb-4"></h4>
@@ -429,11 +572,29 @@ Latest products across GPU adapters, memory heatsinks, PSU extension cables, cas
             }
         });
 
+        // Mobile Accordion Logic for Product Submenu
+        const mobileProductBtn = document.getElementById('mobile-product-btn');
+        const mobileProductSubmenu = document.getElementById('mobile-product-submenu');
+        const mobileProductIcon = document.getElementById('mobile-product-icon');
+
+        mobileProductBtn.addEventListener('click', () => {
+            mobileProductSubmenu.classList.toggle('hidden');
+            if (mobileProductSubmenu.classList.contains('hidden')) {
+                mobileProductIcon.style.transform = 'rotate(0deg)';
+            } else {
+                mobileProductIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+
         // Auto collapse mobile drawer menu when link clicked
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 hamburgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                
+                // Keep accordion closed for next open
+                mobileProductSubmenu.classList.add('hidden');
+                mobileProductIcon.style.transform = 'rotate(0deg)';
             });
         });
 
@@ -483,5 +644,5 @@ Latest products across GPU adapters, memory heatsinks, PSU extension cables, cas
             }
         }
     </script>
-
-</body></html>
+</body>
+</html>
